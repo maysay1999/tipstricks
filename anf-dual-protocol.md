@@ -5,7 +5,7 @@ description: In this article, you will learn how to create dual-protocol volumes
 author: Meisei Takemoto
 ms.author: b-mtakemoto
 ms.date: 02/25/2022
-ms.topic: conceptual
+ms.topic: instruction
 ms.service: azure-netapp-files
 services: storage
 ---

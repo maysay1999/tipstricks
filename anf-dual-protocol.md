@@ -61,4 +61,33 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
 
 ## 手順
 
-1.	
+1. ANF アカウントを作成する
+
+   ```Bash
+   az netappfiles account create \
+     -g anflab-rg \
+     --name netapptestaccount -l japaneast
+   ```
+
+2. ANF pool を作成する
+
+   ```Bash
+   az netappfiles pool create \
+    --resource-group anflab-rg \
+    --location japaneast \
+    --account-name netapptestaccount \
+    --pool-name netapptestpool \
+    --size 4 \
+    --service-level Standard
+   ```
+
+3. DNS の設定を変更
+
+   ```Bash
+   az network vnet update -g MyResourceGroup \
+     -n {vnet_name} --dns-servers 10.0.0.4
+   ```
+
+   > **Note**:  {vnet_name} は実際の環境の VNet名 に置き換え
+
+4. 

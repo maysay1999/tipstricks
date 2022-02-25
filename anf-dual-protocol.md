@@ -26,11 +26,24 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
 |------------------|------------|---------|
 | User: ldap01     | on Linux   | uid 139 |
 | User: ldap02     | on Linux   | uid 140 |
-| Group: ldapg     | on Linux   | uid 555 |
+| Group: ldapg     | on Linux   | gid 555 |
 | User: ldap01     | on Windows | uid 139 |
 | User: ldap02     | on Windows | uid 140 |
-| User: ldapg      | on Windows | uid 555 |
+| User: ldapg      | on Windows | gid 555 |
 
+| Parameter            | Value          |
+|----------------------|----------------|
+| LOCATION             | japaneast   |
+| RESOURCEGROUP        | anflab-rg   |
+| ANF SUBNET           | testsubnet   |
+| NETAPP ACCOUNT       | netapptestaccount  |
+| NNETAPP POOL         | netapptestpool |
+| NETAPP VOLUME        | netapptestvolume  |
+| DOMAIN JOIN USERNAME | azureadmin |
+| DOMAIN JOIN PASSWORD | null |
+| SMB SERVER NAME      | pmcsmb |
+| DNS LIST             | 10.0.0.4 |
+| AD FQDN              | testdomain.local |
 
 ## 注意
 
@@ -48,3 +61,4 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
 
 ## 手順
 
+1.	

@@ -37,12 +37,12 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
 * Linux users と Windows AD users 自動で sync しません。マニュアルで user と group を map させます
 * Linux と Windows で認証方法は異なります。下記を参照ください。
 
-        |     Protocol          |     Security style          |     Name-mapping direction          |     Permissions applied          |
-        |-----------------------|-----------------------------|-------------------------------------|----------------------------------|
-        |  SMB  |  `Unix`  |  Windows to UNIX  |  UNIX (mode bits or NFSv4.x ACLs)  |
-        |  SMB  |  `Ntfs`  |  Windows to UNIX  |  NTFS ACLs (based on Windows SID accessing share)  |
-        |  NFSv3  |  `Unix`  |  None  |  UNIX (mode bits or NFSv4.x ACLs)  |
-        |  NFS  |  `Ntfs`  |  UNIX to Windows  |  NTFS ACLs (based on mapped Windows user SID)  |
+|     Protocol          |     Security style          |     Name-mapping direction          |     Permissions applied          |
+|-----------------------|-----------------------------|-------------------------------------|----------------------------------|
+|  SMB  |  `Unix`  |  Windows to UNIX  |  UNIX (mode bits or NFSv4.x ACLs)  |
+|  SMB  |  `Ntfs`  |  Windows to UNIX  |  NTFS ACLs (based on Windows SID accessing share)  |
+|  NFSv3  |  `Unix`  |  None  |  UNIX (mode bits or NFSv4.x ACLs)  |
+|  NFS  |  `Ntfs`  |  UNIX to Windows  |  NTFS ACLs (based on mapped Windows user SID)  |
 
 * [NFSv3 and SMB] と [NFSv4.1 and SMB] ともにサポートしていますが、ここでは [NFSv3 and SMB] を使用します
 

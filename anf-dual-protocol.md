@@ -15,9 +15,9 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
 
 ## 事前準備
 
-* ADDS または AADDS (Windows 2019 など) Windows client (Windows 10 など) Linux (Ubuntu など) を準備します。
+* ADDS または AADDS (Windows 2019 など) Windows client (Windows 10 など) Linux (Ubuntu など) を準備します
 * ANFのサブネットを作成し、Microsoft.NetApp/volumes に委任します
-* ANF のaccount と pool を作成しておきます。
+* ANF のaccount と pool を作成しておきます
 
 ## ダイアグラム
 

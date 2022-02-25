@@ -21,3 +21,4 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
 
 ## ダイアグラム
 
+![diagram](../images/anf-dual_protocol_diagram.jpg)

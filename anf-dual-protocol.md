@@ -183,3 +183,9 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
    ![anf volume1](https://github.com/maysay1999/tipstricks/blob/main/images/anf-dual-protocol_volume1.png)
 
    ![anf volume2](https://github.com/maysay1999/tipstricks/blob/main/images/anf-dual-protocol_volume2.png)
+
+10. Volume のdデプロイが完成したら、Mount instructions に従い mount
+
+   ![mount](https://github.com/maysay1999/tipstricks/blob/main/images/anf-dual-protocol_mount.png)
+
+11. 

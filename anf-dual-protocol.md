@@ -176,5 +176,5 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
      --domain $AD_FQDN
    ```
 
-9. ANF volume を作成 (**必ずGUIで**)
+9. ANF volume を作成 (**必ずGUIで** CLIだと上手くできないので、無難に)
 

@@ -128,12 +128,26 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
 
     ![ldap02](https://github.com/maysay1999/tipstricks/blob/main/images/anf-dual-protocol_ldap02.png)
 
+   > **Note**:  uid gid は重複しないように `cat /etc/passwd` `cat /etc/group` で空きを確認します
 
-7. Linux で group users を作成
-groupadd -g 555 ldapg
+7. Linux で group と users を作成 (6で作成したものと同じ gid, uid を 使う)
 
-useradd -u 139 ldap01 -g ldapg
-passwd ldap01
+   * 新しいグループ `ldapg` を gid 555 で作成
 
-useradd -u 140 ldap02 -g ldapg
-passwd ldap02
+   ```Bash
+   group add -g 555 ldapg
+    ```
+
+   * 新しいユーザー `ldap01` を uid 139, group `ldapg` で作成し、パスワードを設定
+
+   ```Bash
+   useradd -u 139 ldap01 -g ldapg
+   passwd ldap01
+    ```
+
+   * 新しいユーザー `ldap02` を uid 140, group `ldapg` で作成し、パスワードを設定
+
+   ```Bash
+   useradd -u 140 ldap02 -g ldapg
+   passwd ldap01
+    ```

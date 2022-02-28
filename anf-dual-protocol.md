@@ -95,7 +95,7 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
 
 * ここでは Domain Controller を DNS として使用しているので、Windows にて設定
 
-![reverser dns](https://github.com/maysay1999/tipstricks/blob/main/images/anf-dual-protocol_dns.png)
+* ![reverser dns](https://github.com/maysay1999/tipstricks/blob/main/images/anf-dual-protocol_dns.png)
 
 5. Active Directory User と Group を作成
 

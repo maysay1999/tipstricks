@@ -6,8 +6,8 @@ module "virtual-machine" {
   source  = "./modules/pdcserver"
 
   # Resource Group, location, VNet and Subnet details
-  resource_group_name  = "anflab-rg"
-  location             = "westus"
+  resource_group_name  = "anfdemolab-rg"
+  location             = "japaneast"
   virtual_network_name = "netapp-vnet"
   subnet_name          = "default-sub"
   virtual_network_name2 = "anfjpe-vnet"

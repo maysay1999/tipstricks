@@ -178,3 +178,8 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
 
 9. ANF volume を作成 (**必ずGUIで** CLIだと上手くできないので、無難に)
 
+* Dual Protocol を選ぶ。その他はdefault
+
+   ![anf volume1](https://github.com/maysay1999/tipstricks/blob/main/images/anf-dual-protocol_volume1.png)
+
+   ![anf volume2](https://github.com/maysay1999/tipstricks/blob/main/images/anf-dual-protocol_volume2.png)

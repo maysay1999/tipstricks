@@ -64,7 +64,7 @@ Azure NetApp Files 用の自分だけの laboratory を自動でつくる
    code main.tf
    ```
 
-6. 23行目の`admin_password`にあなたのパスワードをいれ、上書きし保存 **ctl + s**, **ctl + q** (右上の ... をクリックしても可)
+6. 23行目の`admin_password`にあなたのパスワードをいれ、上書きし保存 **ctl + s**, **ctl + q** (右上の **...** をクリックしても可)
 
    ![password](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_pass.png)
 

@@ -109,23 +109,23 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
    * グループ ldapg の attributes の設定:
     `objectClass: group, posixGroup`,  
     `gidNumber: 555`
-    
+
     ![ldapg](https://github.com/maysay1999/tipstricks/blob/main/images/anf-dual-protocol_group.png)
-   
+
    * ユーザー ldap01 の attributes の設定:
     `uid: idap01`,  
     `uidNumber: 139`,  
     `gidNumber: 555`,  
     `objectClass: user, posixAccount`
-    
+
     ![ldap01](https://github.com/maysay1999/tipstricks/blob/main/images/anf-dual-protocol_ldap01.png)
-   
+
    * ユーザー ldap02 の attributes の設定:
     `uid: idap02`,  
     `uidNumber: 140`,  
     `gidNumber: 555`,  
     `objectClass: user, posixAccount`
-    
+
     ![ldap02](https://github.com/maysay1999/tipstricks/blob/main/images/anf-dual-protocol_ldap02.png)
 
 

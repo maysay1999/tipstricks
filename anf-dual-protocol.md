@@ -58,6 +58,7 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
 |  NFS  |  `Ntfs`  |  UNIX to Windows  |  NTFS ACLs (based on mapped Windows user SID)  |
 
 * [NFSv3 and SMB] と [NFSv4.1 and SMB] ともにサポートしていますが、ここでは [NFSv3 and SMB] を使用します
+* 同じ user を Windows (Active Directory) と Linux 両方に作る必要があります
 
 ## 手順
 
@@ -88,6 +89,25 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
      -n {vnet_name} --dns-servers 10.0.0.4
    ```
 
-   > **Note**:  {vnet_name} は実際の環境の VNet名 に置き換え
+   > **Note**:  {vnet_name} は実際の環境の VNet名 に置き換え。10.0.0.4 は Primary Domain Controller
 
-4. 
+4. Reverse DNS を設定
+
+* ここでは Domain Controller を DNS として使用しているので、Windows にて設定
+
+![reverser dns](https://github.com/maysay1999/tipstricks/blob/main/images/anf-dual-protocol_dns.png)
+
+5. Active Directory User と Group を作成
+
+
+
+6. LDAP POSIX Attribute の設定
+
+7. Linux で group users を作成
+groupadd -g 555 ldapg
+
+useradd -u 139 ldap01 -g ldapg
+passwd ldap01
+
+useradd -u 140 ldap02 -g ldapg
+passwd ldap02

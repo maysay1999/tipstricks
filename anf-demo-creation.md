@@ -52,7 +52,7 @@ Azure NetApp Files 用の自分だけの laboratory を自動でつくる
    git clone https://github.com/maysay1999/tipstricks AnfLaboCreate
    ```
 
-4. Direcotryを変える *CLIで実行*
+4. Directoryを変える *CLIで実行*
 
    ```Bash
    cd AnfLaboCreate/dcforest

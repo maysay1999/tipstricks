@@ -13,7 +13,7 @@ services: storage
 
 Azure NetApp Files 用の自分だけの laboratory を自動でつくる
 
-## 基礎知識
+## 必要知識
 
 * [Azure Cloud Shell](https://docs.microsoft.com/ja-jp/azure/cloud-shell/overview)の基本知識
 

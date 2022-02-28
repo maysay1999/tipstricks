@@ -149,5 +149,32 @@ Azure NetApp Files では NFS (NFSv3 or NFSv4.1) または SMB3 または dual p
 
    ```Bash
    useradd -u 140 ldap02 -g ldapg
-   passwd ldap01
+   passwd ldap02
     ```
+
+8. Azure Portal にて Active Direcotry Connections の設定
+
+   ![active directory](https://github.com/maysay1999/tipstricks/blob/main/images/anf-dual-protocol_ad_settings.png)
+
+   * AZ CLI ならこちら
+
+   ```Bash
+   RESOURCEGROUP_NAME="ANFLabo-RG"
+   NETAPP_ACCOUNT_NAME="netapptestaccount"
+   DOMAIN_JOIN_USERNAME=azureadmin
+   DOMAIN_JOIN_PASSWORD=null
+   SMB_SERVER_NAME="pmcsmb"
+   DNS_LIST="10.0.0.4"
+   AD_FQDN="testdomain.local"
+
+   az netappfiles account ad add --resource-group $RESOURCEGROUP_NAME \
+     --name $NETAPP_ACCOUNT_NAME \
+     --username $DOMAIN_JOIN_USERNAME \
+     --password $DOMAIN_JOIN_PASSWORD \
+     --smb-server-name $SMB_SERVER_NAME \
+     --dns $DNS_LIST \
+     --domain $AD_FQDN
+   ```
+
+9. ANF volume を作成 (**必ずGUIで**)
+

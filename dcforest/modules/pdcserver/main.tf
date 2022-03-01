@@ -83,6 +83,157 @@ resource "azurerm_bastion_host" "bastion" {
   }
 }
 
+#---------------------------------------
+# Win 10 client
+#---------------------------------------
+resource "azurerm_network_security_group" "win10" {
+    name                = "win10-nsg"
+    location            = data.azurerm_resource_group.rg.location
+    resource_group_name = data.azurerm_resource_group.rg.name
+
+    security_rule {
+        name                       = "RDP"
+        priority                   = 1100
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "3389"
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+    }
+}
+
+resource "azurerm_network_interface" "win10" {
+  name                = "win10-nic"
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
+  # network_security_group_id = azurerm_network_security_group.win10.id
+
+  ip_configuration {
+    name                          = "win10-ip"
+    subnet_id                     = azurerm_subnet.snet2.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
+resource "azurerm_network_interface_security_group_association" "win10" {
+    network_interface_id      = azurerm_network_interface.win10.id
+    network_security_group_id = azurerm_network_security_group.win10.id
+}
+
+resource "azurerm_windows_virtual_machine" "win10" {
+  name                = "win10-client"
+  resource_group_name = data.azurerm_resource_group.rg.name
+  location            = data.azurerm_resource_group.rg.location
+  size                = "Standard_D2s_v3"
+  admin_username      = var.admin_username
+  admin_password      = var.admin_password == null ? element(concat(random_password.passwd.*.result, [""]), 0) : var.admin_password
+  network_interface_ids = [
+    azurerm_network_interface.win10.id,
+  ]
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "MicrosoftWindowsDesktop"
+    offer     = "Windows-10"
+    sku       = "win10-21h2-pro"
+    version   = "latest"
+  }
+}
+
+#---------------------------------------
+# Ubuntu client
+#---------------------------------------
+resource "azurerm_network_security_group" "ubuntu" {
+    name                = "ubuntu-nsg"
+    location            = data.azurerm_resource_group.rg.location
+    resource_group_name = data.azurerm_resource_group.rg.name
+
+    security_rule {
+        name                       = "SSH"
+        priority                   = 1100
+        direction                  = "Inbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "22"
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+    }
+}
+
+resource "azurerm_network_interface" "ubuntu" {
+  name                = "ubuntu-nic"
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
+
+  ip_configuration {
+    name                          = "ubuntu-ip"
+    subnet_id                     = azurerm_subnet.snet2.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
+resource "azurerm_network_interface_security_group_association" "ubuntu" {
+    network_interface_id      = azurerm_network_interface.ubuntu.id
+    network_security_group_id = azurerm_network_security_group.ubuntu.id
+}
+
+resource "azurerm_linux_virtual_machine" "ubuntu" {
+  name                = "ubuntu"
+  resource_group_name = data.azurerm_resource_group.rg.name
+  location            = data.azurerm_resource_group.rg.location
+  size                = "Standard_D2s_v3"
+  admin_username      = var.admin_username
+  disable_password_authentication = false
+  admin_password = var.admin_password == null ? element(concat(random_password.passwd.*.result, [""]), 0) : var.admin_password
+  network_interface_ids = [
+    azurerm_network_interface.ubuntu.id,
+  ]
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "canonical"
+    offer     = "0001-com-ubuntu-server-focal"
+    sku       = "20_04-lts-gen2"
+    version   = "latest"
+  }
+}
+
+#---------------------------------------
+# peering 
+#---------------------------------------
+resource "azurerm_virtual_network_peering" "peering-1" {
+  name                      = "peer1to2"
+  resource_group_name       = data.azurerm_resource_group.rg.name
+  virtual_network_name      = azurerm_virtual_network.vnet.name
+  remote_virtual_network_id = azurerm_virtual_network.vnet2.id
+}
+
+resource "azurerm_virtual_network_peering" "peering-2" {
+  name                      = "peer2to1"
+  resource_group_name       = data.azurerm_resource_group.rg.name
+  virtual_network_name      = azurerm_virtual_network.vnet2.name
+  remote_virtual_network_id = azurerm_virtual_network.vnet.id
+}
+
+#---------------------------------------
+# DNS
+#---------------------------------------
+resource "azurerm_virtual_network_dns_servers" "dnsip" {
+  virtual_network_id = azurerm_virtual_network.vnet2.id
+  dns_servers        = ["192.168.81.4", "168.63.129.16"]
+}
+
 resource "random_password" "passwd" {
   count       = var.os_flavor == "windows" && var.admin_password == null ? 1 : 0
   length      = 24
@@ -106,19 +257,19 @@ resource "random_string" "str" {
   }
 }
 
-#-----------------------------------
-# Public IP for PDC Virtual Machine
-#-----------------------------------
-resource "azurerm_public_ip" "pip" {
-  count               = var.enable_public_ip_address == true ? var.instances_count : 0
-  name                = lower("pip-vm-${var.virtual_machine_name}-${data.azurerm_resource_group.rg.location}-0${count.index + 1}")
-  location            = data.azurerm_resource_group.rg.location
-  resource_group_name = data.azurerm_resource_group.rg.name
-  allocation_method   = "Static"
-  sku                 = "Standard"
-  domain_name_label   = format("%s%s", lower(replace(var.virtual_machine_name, "/[[:^alnum:]]/", "")), random_string.str[count.index].result)
-  tags                = merge({ "ResourceName" = lower("pip-vm-${var.virtual_machine_name}-${data.azurerm_resource_group.rg.location}-0${count.index + 1}") }, var.tags, )
-}
+# #-----------------------------------
+# # Public IP for PDC Virtual Machine
+# #-----------------------------------
+# resource "azurerm_public_ip" "pip" {
+#   count               = var.enable_public_ip_address == true ? var.instances_count : 0
+#   name                = lower("pip-vm-${var.virtual_machine_name}-${data.azurerm_resource_group.rg.location}-0${count.index + 1}")
+#   location            = data.azurerm_resource_group.rg.location
+#   resource_group_name = data.azurerm_resource_group.rg.name
+#   allocation_method   = "Static"
+#   sku                 = "Standard"
+#   domain_name_label   = format("%s%s", lower(replace(var.virtual_machine_name, "/[[:^alnum:]]/", "")), random_string.str[count.index].result)
+#   tags                = merge({ "ResourceName" = lower("pip-vm-${var.virtual_machine_name}-${data.azurerm_resource_group.rg.location}-0${count.index + 1}") }, var.tags, )
+# }
 
 #---------------------------------------
 # Network Interface for PDC Virtual Machine
@@ -267,6 +418,7 @@ resource "azurerm_network_interface" "win10" {
   name                = "win10-nic"
   location            = data.azurerm_resource_group.rg.location
   resource_group_name = data.azurerm_resource_group.rg.name
+  # network_security_group_id = azurerm_network_security_group.win10.id
 
   ip_configuration {
     name                          = "win10-ip"

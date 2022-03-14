@@ -64,7 +64,7 @@ az netappfiles account create \
 az netappfiles pool create \
     --resource-group anfbackup-rg \
     --location japaneast \
-    --account-name account1 \
+    --account-name account2 \
     --pool-name pool2 \
     --size 4 \
     --service-level Standard

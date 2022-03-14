@@ -25,6 +25,11 @@ Azure NetApp Files Backup の使い方を解説します
 
 ## 留意点
 
+* バックアップは3つのタイプ
+   手動 スナップショットなしでバックアップ (お薦めしない)  
+   スナップショットを作成した後、バックアップ (推奨)  
+   スナップショットポリシーを作成した後、バックアップポリシーを作成し自動バックアップ (推奨)  
+
 * バックアップがポータルで表示されるまで約5分かかる
 * バックアップは同じリージョンに ZRS で保存される
 * バックアップスケジュール を設定したい場合、スナップショットポリシーは必須
@@ -55,7 +60,64 @@ Azure NetApp Files Backup の使い方を解説します
    git clone https://github.com/maysay1999/tipstricks AnfBackup
    ```
 
-```bash
+   ```bash
    ~/AnfBackup/anf-backup.sh
    ```
 
+2. account1のしたに、Volume1 と Volume２ を作成
+
+   * ANFアカウント名: account1
+   * ボリューム名: **volume1**
+   * Protocol: NFSv3
+   * Size: 100MiB
+
+   * ANFアカウント名: account1
+   * ボリューム名: **volume2**
+   * Protocol: NFSv3
+   * Size: 100MiB
+
+3. VMを作成し、volume1 の中に 10MiB のファイルを作成
+
+   * VM名: ubuntu01
+   * リソースグループ: anfbackup-rg
+   * Image: Ubuntu Server 21.10 - Gen2
+   * Size: Standard_D2s_v4
+   * VNet: anfbackup-vnet
+   * Subnet: default-sub
+
+   ボリュームをマウントした後、10Mのファイルを作成
+
+   ```bash
+   dd if=/dev/zero of=10m.img bs=1024 count=10240
+   ```
+
+4. VMを作成し、volume2 の中に 20MiB のファイルを作成
+
+   ```bash
+   dd if=/dev/zero of=20m.img bs=1024 count=20480
+   ```
+
+5. volume1 の バックアップを有効化
+
+   account1 --> volume1 --> Backups --> Configure --> Enabled  
+
+6. 手動 スナップショットなしでバックアップを作成
+
+   Add Backup --> New Backup  
+
+   バックアップ名: account1-pool1-volume1  
+
+7. スナップショットを作成した後、バックアップを作成
+
+   スナップショット名: account1-pool1-volume1-snapshot
+
+8. volume2 に スナップショットポリシーを作成した後、バックアップポリシーを作成
+
+   スナップショットポリシー名: account1-pool1-volume2-snapshot01
+   バックアップポリシー名: account1-pool1-volume2-backup01
+
+9. 同じアカウント同じVNetに復元
+
+10. 同じアカウント違うVNetに復元
+
+11. 別のアカウント同じVNetに復元

@@ -20,7 +20,8 @@ Azure NetApp Files Backup の使い方を解説します
 
 ## ダイアグラム
 
-![diagram](https://github.com/maysay1999/tipstricks/blob/main/images/anf_backup_diagram.png)
+![diagram](https://github.com/maysay1999/tipstricks/blob/main/images/anf_backup_diagram.png)  
+  ダイアグラムのダウンロードは[ここから](https://github.com/maysay1999/tipstricks/blob/main/pdfs/220314_hands-on_diagram_anf_backup.pdf)
 
 ## 留意点
 

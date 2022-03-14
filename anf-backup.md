@@ -122,3 +122,5 @@ Azure NetApp Files Backup の使い方を解説します
 11. 同じアカウント違うVNetに復元
 
 12. 別のアカウント同じVNetに復元
+
+   account2 からリストアする

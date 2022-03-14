@@ -114,8 +114,8 @@ Azure NetApp Files Backup の使い方を解説します
 
 9. volume2 に スナップショットポリシーを作成した後、バックアップポリシーを作成
 
-   スナップショットポリシー名: account1-pool1-volume2-snapshot01
-   バックアップポリシー名: account1-pool1-volume2-backup01
+   スナップショットポリシー名: account1-pool1-volume2-snapshot01  
+   バックアップポリシー名: account1-pool1-volume2-backup01  
 
 10. 同じアカウント同じVNetに復元
 

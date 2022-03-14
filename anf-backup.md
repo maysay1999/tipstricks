@@ -70,11 +70,6 @@ Azure NetApp Files Backup の使い方を解説します
    * Protocol: NFSv3
    * Size: 100MiB
 
-   * ANFアカウント名: account1
-   * ボリューム名: **volume2**
-   * Protocol: NFSv3
-   * Size: 100MiB
-
 3. account1のしたに、VVolume２ を作成
 
    * ANFアカウント名: account1

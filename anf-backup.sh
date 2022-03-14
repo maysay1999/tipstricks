@@ -41,20 +41,20 @@ az netappfiles pool create \
     --size 4 \
     --service-level Standard
 
-az netappfiles volume create \
-    --resource-group anfbackup-rg \
-    --location japaneast \
-    --account-name account1 \
-    --pool-name pool1 \
-    --name volume1 \
-    --service-level Standard \
-    --vnet anfbackup-vnet \
-    --subnet anf-sub \
-    --allowed-clients 0.0.0.0/0 \
-    --rule-index 1 \
-    --usage-threshold 100 \
-    --file-path nfsvolume1 \
-    --protocol-types NFSv3
+# az netappfiles volume create \
+#     --resource-group anfbackup-rg \
+#     --location japaneast \
+#     --account-name account1 \
+#     --pool-name pool1 \
+#     --name volume1 \
+#     --service-level Standard \
+#     --vnet anfbackup-vnet \
+#     --subnet anf-sub \
+#     --allowed-clients 0.0.0.0/0 \
+#     --rule-index 1 \
+#     --usage-threshold 100 \
+#     --file-path nfsvolume1 \
+#     --protocol-types NFSv3
 
 # 2nd account, pool only
 az netappfiles account create \

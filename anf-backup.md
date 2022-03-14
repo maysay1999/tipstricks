@@ -43,3 +43,19 @@ Azure NetApp Files Backup の使い方を解説します
 
   ![diagram](https://github.com/maysay1999/tipstricks/blob/main/images/anf_backup_sample.png)
 
+## 手順
+
+1. Resource Group を作成し、anf-backup.sh を実行
+
+   ```bash
+   az group create -n anfbackup-rg -l japaneast
+   ```
+
+   ```bash
+   git clone https://github.com/maysay1999/tipstricks AnfBackup
+   ```
+
+```bash
+   ~/AnfBackup/anf-backup.sh
+   ```
+

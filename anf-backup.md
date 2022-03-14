@@ -86,13 +86,13 @@ Azure NetApp Files Backup の使い方を解説します
    * VNet: anfbackup-vnet
    * Subnet: default-sub
 
-   ボリュームをマウントした後、10Mのファイルを作成
+   volume1 をマウントした後、10Mのファイルを作成
 
    ```bash
    dd if=/dev/zero of=10m.img bs=1024 count=10240
    ```
 
-5. VMを作成し、volume2 の中に 20MiB のファイルを作成
+5. volume2 をマウントした後、 20MiB のファイルを作成
 
    ```bash
    dd if=/dev/zero of=20m.img bs=1024 count=20480

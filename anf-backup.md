@@ -85,6 +85,7 @@ Azure NetApp Files Backup の使い方を解説します
    * リソースグループ: anfbackup-rg
    * Image: Ubuntu Server 21.10 - Gen2
    * Size: Standard_D2s_v4
+   * User name: anfadmin
    * VNet: anfbackup-vnet
    * Subnet: default-sub
 

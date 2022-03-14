@@ -17,6 +17,7 @@ Azure NetApp Files Backup の使い方を解説します
 ## 事前準備
 
 * anf-backup.sh を実行します
+* その他は、[こちら](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_prep.md)をご参照下さい
 
 ## ダイアグラム
 

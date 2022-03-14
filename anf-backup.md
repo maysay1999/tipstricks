@@ -73,14 +73,14 @@ Azure NetApp Files Backup の使い方を解説します
    * ANFアカウント名: account1
    * ボリューム名: **volume1**
    * Protocol: NFSv3
-   * Size: 100MiB
+   * Size: 100GiB
 
 3. account1のしたに、Volume２ を作成
 
    * ANFアカウント名: account1
    * ボリューム名: **volume2**
    * Protocol: NFSv3
-   * Size: 100MiB
+   * Size: 100GiB
 
 4. VMを作成し、volume1 の中に 10MiB のファイルを作成
 
@@ -137,4 +137,4 @@ Azure NetApp Files Backup の使い方を解説します
 
 12. 別のアカウント同じVNetに復元
 
-   account2 からリストアする
+    * account2 からリストアする  

@@ -9,6 +9,7 @@ ms.topic: instruction
 ms.service: azure-netapp-files
 services: storage
 ---
+
 # Azure NetApp Files Backup を使いこなす
 
 Azure NetApp Files Backup の使い方を解説します
@@ -16,8 +17,6 @@ Azure NetApp Files Backup の使い方を解説します
 ## 事前準備
 
 * anf-backup.sh を実行します
-  1. `git clone https://github.com/maysay1999/tipstricks AnfBackup`
-  2. `./anf-backup.sh`
 
 ## ダイアグラム
 
@@ -41,7 +40,7 @@ Azure NetApp Files Backup の使い方を解説します
 * バックアップを作成できるのは最大5 ボリューム
 * ボリュームを削除してもバックアップは残る
 * 課金はバックアップの総容量できまる
-* 手動で実行する場合、名前の付け方に注意。何をソースとして作成したのか認識する手段がない為
+* 手動で実行する場合、名前の付け方に注意。何をソースとして作成したのか認識する手段がない為  
   {アカウント名}-{プール名}-{ボリューム名}-{snapshot / backup} の名前を推奨  
   例1) account3-pool1-volume2-snapshot1  
   例2) account3-pool1-volume2-backup1  

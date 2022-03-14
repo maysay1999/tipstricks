@@ -95,10 +95,18 @@ Azure NetApp Files Backup の使い方を解説します
    dd if=/dev/zero of=10m.img bs=1024 count=10240
    ```
 
+   ```bash
+   ls -lh
+   ```
+
 5. volume2 をマウントした後、 20MiB のファイルを作成
 
    ```bash
    dd if=/dev/zero of=20m.img bs=1024 count=20480
+   ```
+
+   ```bash
+   ls -lh
    ```
 
 6. volume1 の バックアップを有効化

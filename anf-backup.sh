@@ -16,7 +16,7 @@ az network vnet subnet create \
 
 # 2nd vnet
 az network vnet create -g anfbackup-rg -n anfbackup2-vnet \
-    --address-prefix 172.29.64.0/22 \
+    --address-prefix 192.168.64.0/22 \
     --subnet-name default2-sub \
     -l japaneast \
     --subnet-prefix 192.168.65.0/24

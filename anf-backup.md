@@ -41,7 +41,7 @@ Azure NetApp Files Backup の使い方を解説します
 * ボリュームを削除してもバックアップは残る
 * 課金はバックアップの総容量できまる
 * 手動で実行する場合、名前の付け方に注意。何をソースとして作成したのか認識する手段がない為  
-  {アカウント名}-{プール名}-{ボリューム名}-{snapshot / backup} の名前を推奨  
+  **{アカウント名}-{プール名}-{ボリューム名}-{snapshot / backup}** の名前を推奨  
   例1) account3-pool1-volume2-snapshot1  
   例2) account3-pool1-volume2-backup1  
 

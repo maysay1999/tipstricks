@@ -88,7 +88,7 @@ Azure NetApp Files 用の自分だけの laboratory を自動でつくる
 
 10. 15分程度待てば完成
 
-* 3つの VM が作成されているか確認
+  3つの VM が作成されているか確認  
   ![list of resources](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_terraform_list.png)  
 
 11. Windows 10 client を AD Domain `azureisfun.local` に参加させる

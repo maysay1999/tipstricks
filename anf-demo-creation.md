@@ -110,7 +110,5 @@ Azure NetApp Files 用の自分だけの laboratory を自動でつくる
 
 * [Azure NetApp Files のコスト モデル](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-cost-model)  
   サービスから経費を管理するための Azure NetApp Files のコスト モデルについて説明します  
-* [Azure NetApp Files を使用したソリューション アーキテクチャ](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures)  
-  Azure NetApp Files を使用したソリューション アーキテクチャのベスト プラクティスへの参照を提供します  
 * [Azure NetApp Files のストレージ階層](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-understand-storage-hierarchy)  
   Azure NetApp Files のアカウント、容量プール、ボリュームを含むストレージ階層について説明します  

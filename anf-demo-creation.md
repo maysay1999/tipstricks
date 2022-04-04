@@ -86,12 +86,15 @@ Azure NetApp Files 用の自分だけの laboratory を自動でつくる
    yes
    ```
 
-10. 20分ほど待てば完成
+10. 15分程度待てば完成
 
-11. (optional) Windows 10 client を AD Domain `azureisfun.local` に参加させる
+11. Windows 10 client を AD Domain `azureisfun.local` に参加させる
 
-* command prompt から`control sysdm.cpl`と入力し、`azureisfun.local` ドメインに参加させ、reboot
-
-   ![sysdm](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_sysdm.png)
-
-   ![join domain](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_join_domain.png)
+* 手順  
+  1. win10-client の "概要" --> "接続" --> "Bastion" でログイン。ユーザー名: anfadmin、パスワード 手順 6 で指定したもの  
+  2. command prompt から`control sysdm.cpl`と入力し、System Properties を表示  
+     ![sysdm.cpl](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_sysdm.png)  
+  3. "Change"をクリック  
+     ![System properties](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_join_domain-pre.png)  
+  4. `azureisfun.local` ドメインに参加させ、reboot
+     ![join domain](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_join_domain.png)

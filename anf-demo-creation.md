@@ -94,10 +94,19 @@ Azure NetApp Files 用の自分だけの laboratory を自動でつくる
 11. Windows 10 client を AD Domain `azureisfun.local` に参加させる
 
 * 手順  
-  1. win10-client の "概要" --> "接続" --> "Bastion" でログイン。ユーザー名: anfadmin、パスワード 手順 6 で指定したもの  
+  1. win10-client の "概要" --> "接続" --> "Bastion" でログイン。ユーザー名: anfadmin、パスワード: 手順 6 で指定したもの  
   2. command prompt から`control sysdm.cpl`と入力し、System Properties を表示  
      ![sysdm.cpl](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_sysdm.png)  
   3. "Change"をクリック  
      ![System properties](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_join_domain-pre.png)  
   4. `azureisfun.local` ドメインに参加させ、reboot
      ![join domain](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_join_domain.png)
+
+## 推奨コンテンツ
+
+* [Azure NetApp Files のコスト モデル](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-cost-model)
+  サービスから経費を管理するための Azure NetApp Files のコスト モデルについて説明します  
+* [Azure NetApp Files を使用したソリューション アーキテクチャ](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-solution-architectures)  
+  Azure NetApp Files を使用したソリューション アーキテクチャのベスト プラクティスへの参照を提供します  
+* [Azure NetApp Files のストレージ階層](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-understand-storage-hierarchy)  
+  Azure NetApp Files のアカウント、容量プール、ボリュームを含むストレージ階層について説明します  

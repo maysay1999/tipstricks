@@ -106,6 +106,8 @@ Azure NetApp Files 用の自分だけの laboratory を自動でつくる
 
 * [Azure NetApp Files ハンズオン NFS 編 スタンダード](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_ubuntu.md)
 
+* [Azure NetApp Files ハンズオン SMB 編](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_windows.md)
+
 ## 推奨コンテンツ
 
 * [Azure NetApp Files のコスト モデル](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-cost-model)  

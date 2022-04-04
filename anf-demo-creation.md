@@ -102,6 +102,10 @@ Azure NetApp Files 用の自分だけの laboratory を自動でつくる
   4. `azureisfun.local` ドメインに参加させ、reboot
      ![join domain](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_join_domain.png)
 
+## 次のステップ
+
+* [Azure NetApp Files ハンズオン NFS 編 スタンダード](https://github.com/maysay1999/anfdemo02/blob/main/anf-hands-on_ubuntu.md)
+
 ## 推奨コンテンツ
 
 * [Azure NetApp Files のコスト モデル](https://docs.microsoft.com/ja-jp/azure/azure-netapp-files/azure-netapp-files-cost-model)

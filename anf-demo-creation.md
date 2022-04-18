@@ -95,11 +95,13 @@ Azure NetApp Files 用の自分だけの laboratory を自動でつくる
 
 * 手順  
   1. win10-client の "概要" --> "接続" --> "Bastion" でログイン。ユーザー名: anfadmin、パスワード: 手順 6 で指定したもの  
-  2. command prompt から`control sysdm.cpl`と入力し、System Properties を表示  
+  2. 右側にネットワーク検出許可がポップアップされれば、「はい」をクリック  
+      ![Windows popup](https://github.com/maysay1999/anfdemo02/raw/main/images/anf-smb-network.png)  
+  3. command prompt から`control sysdm.cpl`と入力し、System Properties を表示  
      ![sysdm.cpl](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_sysdm.png)  
-  3. "Change"をクリック  
+  4. "Change"をクリック  
      ![System properties](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_join_domain-pre.png)  
-  4. `azureisfun.local` ドメインに参加させ、reboot
+  5. `azureisfun.local` ドメインに参加させ、reboot
      ![join domain](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_join_domain.png)
 
 ## 次のステップ

@@ -68,3 +68,30 @@ az netappfiles pool create \
     --pool-name pool2 \
     --size 4 \
     --service-level Standard
+
+### Bastion
+az network vnet subnet create \
+    -g anfbackup-rg \
+    -n AzureBastionSubnet \
+    --vnet-name anfbackup-vnet \
+    --address-prefixes 172.29.66.0/26
+
+az network public-ip create --resource-group anfbackup-rg \
+    --name anfbackup-vnet-ip \
+    --sku Standard
+
+az network bastion create --name AnfBastion \
+  --public-ip-address anfbackup-vnet-ip \
+  -g anfbackup-rg --vnet-name anfbackup-vnet \
+  -l japaneast
+
+## Ubuntu VM
+az vm create -g  anfbackup-rg \
+  --name ubuntu-anf-demo01 \
+  --size Standard_D2ds_v4  \
+  --vnet-name anfbackup-vnet \
+  --subnet default-sub \
+  --image UbuntuLTS \
+  --public-ip-address "" \
+  --admin-username anfadmin \
+  --admin-password ""

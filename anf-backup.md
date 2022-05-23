@@ -70,7 +70,7 @@ Azure NetApp Files Backup の使い方を解説します
 
 2. 27行目にpasswordを投入し(12文字以上)、上書き設定した後、shellを実行する。
 
-  ![anf-backup password](https://github.com/maysay1999/tipstricks/blob/main/images/anf-backup-password.png)  
+   ![anf-backup password](https://github.com/maysay1999/tipstricks/blob/main/images/anf-backup-password.png)
 
    ```bash
    ~/AnfBackup/anf-backup.sh

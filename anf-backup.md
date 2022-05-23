@@ -148,14 +148,24 @@ Azure NetApp Files Backup の使い方を解説します
 
    * バックアップ名: account1-pool1-volume1  
 
+   ![anf backup1](https://github.com/maysay1999/tipstricks/blob/main/images/anf_backup_backup1.png)
+
 9. スナップショットを作成した後、バックアップを作成
 
    * スナップショット名: account1-pool1-volume1-snapshot
 
-10. volume2 に スナップショットポリシーを作成した後、バックアップポリシーを作成
+   ![anf backup2](https://github.com/maysay1999/tipstricks/blob/main/images/anf_backup_backup2.png)
 
-* スナップショットポリシー名: account1-pool1-volume2-snapshot01
-* バックアップポリシー名: account1-pool1-volume2-backup01
+10. バックアップポリシーを作成。Backup Policy --> スナップショットポリシー と　バックアップポリシー　を作成。
+
+* スナップショットポリシー名: account1-pool1-volume2-snapshot01  
+  バックアップポリシー名: account1-pool1-volume2-backup01  
+
+  ![anf backup policy](https://github.com/maysay1999/tipstricks/blob/main/images/anf_backup_backuppolicy.png)
+
+* 作成後、スナップショットポリシーをvolume2にアサインする  
+
+  ![anf backup is assgined to vol2](https://github.com/maysay1999/tipstricks/blob/main/images/anf_backup_snapshotpolicy.png)
 
 11. 同じアカウント同じVNetに復元
 

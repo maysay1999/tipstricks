@@ -76,25 +76,42 @@ Azure NetApp Files Backup の使い方を解説します
    ~/AnfBackup/anf-backup.sh
    ```
 
-3. account1のしたに、Volume1 を作成
+3. NetApp account1 --> pool1 の配下に、Volume1 を作成
 
    * ANFアカウント名: account1
    * ボリューム名: **volume1**
    * Protocol: NFSv3
    * Size: 100GiB
 
-4. account1のしたに、Volume２ を作成
+   ![anf backup volume1](https://github.com/maysay1999/tipstricks/blob/main/images/anf_backup_vol1.png)
+
+4. NetApp account1 --> pool1 の配下に、Volume2 を作成
 
    * ANFアカウント名: account1
    * ボリューム名: **volume2**
    * Protocol: NFSv3
    * Size: 100GiB
 
-5. VMに10MiB のファイルを作成
+   ![anf backup volume2](https://github.com/maysay1999/tipstricks/blob/main/images/anf_backup_vol2.png)  
+
+5. VM ubuntu-anf-demo01に bastion でログインし、volume1 をマウント。そして、10MiB のファイルを作成
+
+   VM ubuntu-anf-demo01に bastion でログイン
+
+   ![anf backup ubuntu](https://github.com/maysay1999/tipstricks/blob/main/images/anf_backup_ubuntu.png)
 
    volume1 をマウントした後、10Mのファイルを作成
 
    ```bash
+   sudo -i
+   apt install -y nfs-common
+   cd /mnt
+   mkdir volume1
+   mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 172.29.64.4:/volume1 volume1
+   ```
+
+   ```bash
+   cd /mnt/volume1
    dd if=/dev/zero of=10m.img bs=1024 count=10240
    ```
 
@@ -105,6 +122,13 @@ Azure NetApp Files Backup の使い方を解説します
 6. volume2 をマウントした後、 20MiB のファイルを作成
 
    ```bash
+   cd /mnt
+   mkdir volume2
+   mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 172.29.64.4:/volume2 volume2
+   ```
+
+   ```bash
+   cd /mnt/volume2
    dd if=/dev/zero of=20m.img bs=1024 count=20480
    ```
 
@@ -114,7 +138,9 @@ Azure NetApp Files Backup の使い方を解説します
 
 7. volume1 の バックアップを有効化
 
-   account1 --> volume1 --> Backups --> Configure --> Enabled  
+   account1 --> volume1 --> Backups --> Configure --> Enabled --> OK  
+
+   ![anf backup enabled](https://github.com/maysay1999/tipstricks/blob/main/images/anf_backup_enabled.png)
 
 8. 手動 スナップショットなしでバックアップを作成
 

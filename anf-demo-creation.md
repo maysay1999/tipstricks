@@ -80,11 +80,13 @@ Azure NetApp Files 用の自分だけの laboratory を自動でつくる
    terraform apply
    ```
 
-## 9. "Do you want to perform these action? ..." Enter a value: と出てきたら `yes` と入力。作成途中でエラーが発生した際は、再度 `terraform apply` を実行してください  
+## 9. "Do you want to perform these action? ..." Enter a value: と出てきたら `yes` と入力。  
 
    ```hcl
    yes
    ```
+
+> **ノート**:  作成途中でエラーが発生した際は、再度 `terraform apply` を実行してください
 
 ## 10. 15分程度待てば完成
 

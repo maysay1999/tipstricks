@@ -93,7 +93,7 @@ Azure NetApp Files 用の自分だけの laboratory を自動でつくる
 * 3つの VM (ubuntu, win10-client, windc01) が作成されているか確認  
     ![list of resources](https://github.com/maysay1999/tipstricks/blob/main/images/anf-lab_terraform_list.png)  
 
-## 11. Windows 10 client を AD Domain `azureisfun.local` に参加させる
+## 11. Windows 10 client を AD Domain "azureisfun.local" に参加させる
 
 * 手順  
   1. win10-client の "概要" --> "接続" --> "Bastion" でログイン。ユーザー名: anfadmin、パスワード: 手順 6 で指定したもの  
